@@ -18,7 +18,7 @@ public class RestaurantsController : ApiControllerBase
         return Ok(restaurants);
     }
 
-    [HttpGet("{restaurantId:long}")]
+    [HttpGet("{restaurantId}")]
     public async Task<IActionResult> GetRestaurantById(long restaurantId)
     {
         var restaurant = await Sender.Send(new GetRestaurantByIdQuery(restaurantId));
@@ -34,7 +34,7 @@ public class RestaurantsController : ApiControllerBase
         return Ok(restaurantId);
     }
 
-    [HttpDelete("{restaurantId:long}")]
+    [HttpDelete("{restaurantId}")]
     public async Task<IActionResult> DeleteRestaurant(long restaurantId)
     {
         await Sender.Send(new DeleteRestaurantCommand(restaurantId));

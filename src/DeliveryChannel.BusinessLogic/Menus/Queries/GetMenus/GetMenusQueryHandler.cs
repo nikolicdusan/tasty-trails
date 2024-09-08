@@ -14,6 +14,6 @@ public class GetMenusQueryHandler(IRestaurantDbContext context) : IRequestHandle
             .Where(e => e.RestaurantId == request.RestaurantId)
             .ToListAsync(cancellationToken);
 
-        return menus.Select(menu => menu.ToRestaurantMenuDto());
+        return menus.Select(menu => menu.ToMenuDto());
     }
 }

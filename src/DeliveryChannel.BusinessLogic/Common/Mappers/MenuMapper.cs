@@ -6,7 +6,7 @@ namespace DeliveryChannel.BusinessLogic.Common.Mappers;
 
 public static class MenuMapper
 {
-    public static MenuDto ToRestaurantMenuDto(this Menu menu) =>
+    public static MenuDto ToMenuDto(this Menu menu) =>
         new MenuDto
         {
             Title = menu.Title,
