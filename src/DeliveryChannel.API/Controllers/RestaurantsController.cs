@@ -1,7 +1,6 @@
 using DeliveryChannel.API.Common;
-using DeliveryChannel.BusinessLogic.Menus.Commands.CreateMenu;
-using DeliveryChannel.BusinessLogic.Menus.Queries.GetMenus;
 using DeliveryChannel.BusinessLogic.Restaurants.Commands.CreateRestaurant;
+using DeliveryChannel.BusinessLogic.Restaurants.Commands.DeleteRestaurant;
 using DeliveryChannel.BusinessLogic.Restaurants.Queries.GetRestaurantById;
 using DeliveryChannel.BusinessLogic.Restaurants.Queries.GetRestaurants;
 using Microsoft.AspNetCore.Mvc;
@@ -35,24 +34,11 @@ public class RestaurantsController : ApiControllerBase
         return Ok(restaurantId);
     }
 
-    [HttpGet("{restaurantId:long}/menus")]
-    public async Task<IActionResult> GetMenus(long restaurantId)
+    [HttpDelete("{restaurantId:long}")]
+    public async Task<IActionResult> DeleteRestaurant(long restaurantId)
     {
-        var menus = await Sender.Send(new GetMenusQuery(restaurantId));
+        await Sender.Send(new DeleteRestaurantCommand(restaurantId));
 
-        return Ok(menus);
-    }
-
-    [HttpPost("{restaurantId:long}/menus")]
-    public async Task<IActionResult> CreateMenu(long restaurantId, CreateMenuCommand command)
-    {
-        if (restaurantId != command.RestaurantId)
-        {
-            return BadRequest();
-        }
-
-        var menuId = await Sender.Send(command);
-
-        return Ok(menuId);
+        return NoContent();
     }
 }
