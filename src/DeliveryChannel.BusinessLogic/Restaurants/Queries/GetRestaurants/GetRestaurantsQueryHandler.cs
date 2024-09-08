@@ -1,4 +1,5 @@
 using DeliveryChannel.BusinessLogic.Common.Interfaces;
+using DeliveryChannel.BusinessLogic.Restaurants.Models;
 using DeliveryChannel.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

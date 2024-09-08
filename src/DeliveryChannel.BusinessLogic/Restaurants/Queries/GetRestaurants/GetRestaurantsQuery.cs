@@ -1,3 +1,4 @@
+using DeliveryChannel.BusinessLogic.Restaurants.Models;
 using MediatR;
 
 namespace DeliveryChannel.BusinessLogic.Restaurants.Queries.GetRestaurants;

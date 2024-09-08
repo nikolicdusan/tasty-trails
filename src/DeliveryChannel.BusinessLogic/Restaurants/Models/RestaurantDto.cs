@@ -1,8 +1,7 @@
-namespace DeliveryChannel.BusinessLogic.Restaurants.Queries.GetRestaurants;
+namespace DeliveryChannel.BusinessLogic.Restaurants.Models;
 
 public class RestaurantDto
 {
-    public long Id { get; set; }
     public string Name { get; set; }
     public string Country { get; set; }
     public string City { get; set; }
