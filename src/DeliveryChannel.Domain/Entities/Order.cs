@@ -16,5 +16,5 @@ public class Order
     public required decimal Total { get; set; }
     public required bool IsPaid { get; set; }
     public string? Note { get; set; }
-    public ICollection<OrderItem> OrderItems = new List<OrderItem>();
+    public ICollection<OrderItem> Items = new List<OrderItem>();
 }
