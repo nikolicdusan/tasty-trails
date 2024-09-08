@@ -1,3 +1,4 @@
+using DeliveryChannel.API.Middleware;
 using DeliveryChannel.BusinessLogic;
 using DeliveryChannel.Infrastructure;
 
@@ -17,6 +18,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.MapControllers();
 

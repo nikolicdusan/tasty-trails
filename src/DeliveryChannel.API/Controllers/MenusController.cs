@@ -18,7 +18,7 @@ public class MenusController : ApiControllerBase
         return Ok(menus);
     }
 
-    [HttpGet("{menuId}")]
+    [HttpGet("{restaurantId}/menus/{menuId}")]
     public async Task<IActionResult> GetMenuById(long menuId, CancellationToken cancellationToken)
     {
         var menu = await Sender.Send(new GetMenuByIdQuery(menuId), cancellationToken);
@@ -39,7 +39,7 @@ public class MenusController : ApiControllerBase
         return Ok(menuId);
     }
 
-    [HttpDelete("{menuId}")]
+    [HttpDelete("{restaurantId}/menus/{menuId}")]
     public async Task<IActionResult> DeleteMenu(long menuId, CancellationToken cancellationToken)
     {
         await Sender.Send(new DeleteMenuCommand(menuId), cancellationToken);
