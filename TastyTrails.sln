@@ -3,10 +3,49 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CC479C40-8935-4FB0-BDB6-047CA53C934D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{CB3E163E-6CC9-4B28-91A0-8422C0B4F313}"
+	ProjectSection(SolutionItems) = preProject
+		docs\Tasty Trails - Solution Architecture.drawio.pdf = docs\Tasty Trails - Solution Architecture.drawio.pdf
+		docs\Tasty Trails - Solution Design Proposal.pdf = docs\Tasty Trails - Solution Design Proposal.pdf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Delivery Channel", "Delivery Channel", "{677B7C44-37D5-411A-8953-19AA15374FD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryChannel.API", "src\DeliveryChannel.API\DeliveryChannel.API.csproj", "{6798B881-744B-4CA3-A01E-1435112B3E09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryChannel.Domain", "src\DeliveryChannel.Domain\DeliveryChannel.Domain.csproj", "{A908D551-1070-480F-B26F-B80B45052DAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryChannel.Infrastructure", "src\DeliveryChannel.Infrastructure\DeliveryChannel.Infrastructure.csproj", "{58CA0019-9F22-4CC8-9F74-6D5A8C737D3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryChannel.Service", "src\DeliveryChannel.Service\DeliveryChannel.Service.csproj", "{9F33E727-B039-4AF1-9BF9-1EC99A7EC58F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{677B7C44-37D5-411A-8953-19AA15374FD8} = {CC479C40-8935-4FB0-BDB6-047CA53C934D}
+		{6798B881-744B-4CA3-A01E-1435112B3E09} = {677B7C44-37D5-411A-8953-19AA15374FD8}
+		{A908D551-1070-480F-B26F-B80B45052DAD} = {677B7C44-37D5-411A-8953-19AA15374FD8}
+		{58CA0019-9F22-4CC8-9F74-6D5A8C737D3E} = {677B7C44-37D5-411A-8953-19AA15374FD8}
+		{9F33E727-B039-4AF1-9BF9-1EC99A7EC58F} = {677B7C44-37D5-411A-8953-19AA15374FD8}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6798B881-744B-4CA3-A01E-1435112B3E09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6798B881-744B-4CA3-A01E-1435112B3E09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6798B881-744B-4CA3-A01E-1435112B3E09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6798B881-744B-4CA3-A01E-1435112B3E09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A908D551-1070-480F-B26F-B80B45052DAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A908D551-1070-480F-B26F-B80B45052DAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A908D551-1070-480F-B26F-B80B45052DAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A908D551-1070-480F-B26F-B80B45052DAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58CA0019-9F22-4CC8-9F74-6D5A8C737D3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58CA0019-9F22-4CC8-9F74-6D5A8C737D3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58CA0019-9F22-4CC8-9F74-6D5A8C737D3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58CA0019-9F22-4CC8-9F74-6D5A8C737D3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F33E727-B039-4AF1-9BF9-1EC99A7EC58F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F33E727-B039-4AF1-9BF9-1EC99A7EC58F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F33E727-B039-4AF1-9BF9-1EC99A7EC58F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F33E727-B039-4AF1-9BF9-1EC99A7EC58F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
