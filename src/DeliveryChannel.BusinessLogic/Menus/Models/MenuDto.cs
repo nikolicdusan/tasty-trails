@@ -1,6 +1,6 @@
-namespace DeliveryChannel.BusinessLogic.Restaurants.Models;
+namespace DeliveryChannel.BusinessLogic.Menus.Models;
 
-public class RestaurantMenuDto
+public class MenuDto
 {
     public string? Title { get; set; }
     public DateOnly StartDate { get; set; }
