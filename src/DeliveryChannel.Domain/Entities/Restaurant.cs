@@ -7,5 +7,5 @@ public class Restaurant
     public required string Country { get; set; }
     public required string City { get; set; }
     public required string AddressLine { get; set; }
-    public Menu? Menu { get; set; }
+    public ICollection<Menu> Menu { get; set; } = new List<Menu>();
 }

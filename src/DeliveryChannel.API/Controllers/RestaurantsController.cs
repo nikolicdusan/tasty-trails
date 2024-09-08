@@ -1,11 +1,13 @@
 using DeliveryChannel.API.Common;
 using DeliveryChannel.BusinessLogic.Restaurants.Commands.CreateRestaurant;
 using DeliveryChannel.BusinessLogic.Restaurants.Queries.GetRestaurantById;
+using DeliveryChannel.BusinessLogic.Restaurants.Queries.GetRestaurantMenus;
 using DeliveryChannel.BusinessLogic.Restaurants.Queries.GetRestaurants;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DeliveryChannel.API.Controllers;
 
+[Route("api/restaurants")]
 public class RestaurantsController : ApiControllerBase
 {
     [HttpGet]
@@ -16,10 +18,10 @@ public class RestaurantsController : ApiControllerBase
         return Ok(restaurants);
     }
 
-    [HttpGet("{id:long}")]
-    public async Task<IActionResult> GetRestaurantById(long id)
+    [HttpGet("{restaurantId:long}")]
+    public async Task<IActionResult> GetRestaurantById(long restaurantId)
     {
-        var restaurant = await Sender.Send(new GetRestaurantByIdQuery(id));
+        var restaurant = await Sender.Send(new GetRestaurantByIdQuery(restaurantId));
 
         return Ok(restaurant);
     }
@@ -30,5 +32,13 @@ public class RestaurantsController : ApiControllerBase
         var restaurantId = await Sender.Send(command);
 
         return Ok(restaurantId);
+    }
+
+    [HttpGet("{restaurantId:long}/menus")]
+    public async Task<IActionResult> GetRestaurantMenus(long restaurantId)
+    {
+        var menus = await Sender.Send(new GetRestaurantMenusQuery(restaurantId));
+
+        return Ok(menus);
     }
 }
