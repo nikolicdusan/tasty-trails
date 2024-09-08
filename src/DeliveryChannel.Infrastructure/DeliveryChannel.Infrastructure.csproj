@@ -17,7 +17,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\DeliveryChannel.Domain\DeliveryChannel.Domain.csproj" />
-      <ProjectReference Include="..\DeliveryChannel.Service\DeliveryChannel.Service.csproj" />
+      <ProjectReference Include="..\DeliveryChannel.BusinessLogic\DeliveryChannel.BusinessLogic.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,5 +1,5 @@
 using DeliveryChannel.Infrastructure.Data;
-using DeliveryChannel.Service.Common.Interfaces;
+using DeliveryChannel.BusinessLogic.Common.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

@@ -1,5 +1,5 @@
 using DeliveryChannel.Domain.Entities;
-using DeliveryChannel.Service.Common.Interfaces;
+using DeliveryChannel.BusinessLogic.Common.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace DeliveryChannel.Infrastructure.Data;
@@ -17,4 +17,7 @@ public class RestaurantDbContext(DbContextOptions<RestaurantDbContext> options) 
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(RestaurantDbContext).Assembly);
     }
+
+    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default) =>
+        await base.SaveChangesAsync(cancellationToken);
 }

@@ -1,7 +1,7 @@
 using DeliveryChannel.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace DeliveryChannel.Service.Common.Interfaces;
+namespace DeliveryChannel.BusinessLogic.Common.Interfaces;
 
 public interface IRestaurantDbContext
 {
@@ -10,4 +10,6 @@ public interface IRestaurantDbContext
     DbSet<Order> Orders { get; }
     DbSet<OrderItem> OrderItems { get; }
     DbSet<Restaurant> Restaurants { get; }
+    
+    Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }
