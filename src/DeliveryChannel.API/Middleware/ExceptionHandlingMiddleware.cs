@@ -1,5 +1,6 @@
 using System.Net;
 using DeliveryChannel.BusinessLogic.Common.Exceptions;
+using DeliveryChannel.Domain.Exceptions;
 using Newtonsoft.Json;
 
 namespace DeliveryChannel.API.Middleware;
@@ -17,6 +18,10 @@ public class ExceptionHandlingMiddleware(RequestDelegate next, ILogger<Exception
         catch (NotFoundException ex)
         {
             await HandleNotFoundException(context, ex);
+        }
+        catch (OverlappingMenuPeriodException ex)
+        {
+            await HandleOverlappingMenuPeriodException(context, ex);
         }
         catch (Exception ex)
         {
@@ -36,7 +41,21 @@ public class ExceptionHandlingMiddleware(RequestDelegate next, ILogger<Exception
             Detail = exception.Message
         };
 
-        return context.Response.WriteAsync(JsonConvert.SerializeObject(errorResponse));
+        return WriteResponse(context, errorResponse);
+    }
+
+    private static Task HandleOverlappingMenuPeriodException(HttpContext context, Exception exception)
+    {
+        context.Response.StatusCode = (int)HttpStatusCode.UnprocessableEntity;
+
+        var errorResponse = new
+        {
+            context.Response.StatusCode,
+            Message = "Unable to process the request.",
+            Detail = exception.Message
+        };
+
+        return WriteResponse(context, errorResponse);
     }
 
     private static Task HandleExceptionAsync(HttpContext context, Exception exception)
@@ -50,6 +69,9 @@ public class ExceptionHandlingMiddleware(RequestDelegate next, ILogger<Exception
             Detail = exception.Message
         };
 
-        return context.Response.WriteAsync(JsonConvert.SerializeObject(errorResponse));
+        return WriteResponse(context, errorResponse);
     }
+
+    private static Task WriteResponse(HttpContext context, object errorResponse) =>
+        context.Response.WriteAsync(JsonConvert.SerializeObject(errorResponse));
 }
