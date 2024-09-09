@@ -1,4 +1,5 @@
 using DeliveryChannel.BusinessLogic.Orders.Commands.Models;
+using DeliveryChannel.BusinessLogic.Orders.Models;
 using DeliveryChannel.Domain.Entities;
 
 namespace DeliveryChannel.BusinessLogic.Common.Mappers;
@@ -10,6 +11,13 @@ public static class OrderMapper
         {
             Id = order.Id,
             Total = order.Total,
-            Status = nameof(order.Status)
+            Status = order.Status.ToString()
+        };
+
+    public static OrderStatusDto ToOrderStatusDto(this Order order) =>
+        new()
+        {
+            Status = order.Status.ToString(),
+            UpdatedAt = order.UpdatedAt ?? order.CreatedAt
         };
 }

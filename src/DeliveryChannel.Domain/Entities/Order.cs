@@ -12,6 +12,7 @@ public class Order
     public required string Address { get; set; }
     public required string PhoneNumber { get; set; }
     public required DateTime CreatedAt { get; set; }
+    public DateTime? UpdatedAt { get; set; }
     public required OrderStatus Status { get; set; }
     public required decimal Subtotal { get; set; }
     public required decimal? Discount { get; set; }

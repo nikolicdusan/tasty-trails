@@ -1,5 +1,6 @@
 using DeliveryChannel.API.Common;
 using DeliveryChannel.BusinessLogic.Orders.Commands.CreateOrder;
+using DeliveryChannel.BusinessLogic.Orders.Queries.GetOrderStatus;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DeliveryChannel.API.Controllers;
@@ -13,5 +14,13 @@ public class OrdersController : ApiControllerBase
         var orderId = await Sender.Send(command);
 
         return Created();
+    }
+
+    [HttpGet("{orderId}/status")]
+    public async Task<IActionResult> GetOrderStatus(long orderId)
+    {
+        var orderStatus = await Sender.Send(new GetOrderStatusQuery(orderId));
+
+        return Ok(orderStatus);
     }
 }

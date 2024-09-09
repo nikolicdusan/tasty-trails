@@ -11,7 +11,7 @@ public static class MenuItemMapper
             ItemId = menuItem.Item.Id,
             Name = menuItem.Item.Name,
             Price = menuItem.Item.Price,
-            Category = nameof(menuItem.Item.Category),
+            Category = menuItem.Item.Category.ToString(),
             Description = menuItem.Item.Description,
             Ingredients = menuItem.Item.Ingredients
         };
