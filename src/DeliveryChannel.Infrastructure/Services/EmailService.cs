@@ -7,7 +7,7 @@ using MimeKit;
 
 namespace DeliveryChannel.Infrastructure.Services;
 
-public class EmailService(ILogger<EmailService> logger, IOptions<SmtpSettings> smtpSettings) : IEmailService
+public class EmailService(ILogger logger, IOptions<SmtpSettings> smtpSettings) : IEmailService
 {
     private readonly SmtpSettings _smtpSettings = smtpSettings.Value;
 
@@ -15,7 +15,7 @@ public class EmailService(ILogger<EmailService> logger, IOptions<SmtpSettings> s
         CancellationToken cancellationToken)
     {
         var message = new MimeMessage();
-        message.From.Add(new MailboxAddress("Tasty Trails", "mailtrap@demomailtrap.com"));
+        message.From.Add(new MailboxAddress(_smtpSettings.FromName, _smtpSettings.FromEmail));
         message.To.Add(new MailboxAddress(toFullName, toEmail));
         message.Subject = subject;
 
@@ -29,6 +29,8 @@ public class EmailService(ILogger<EmailService> logger, IOptions<SmtpSettings> s
             await client.ConnectAsync(_smtpSettings.Host, _smtpSettings.Port, cancellationToken: cancellationToken);
             await client.AuthenticateAsync(_smtpSettings.Username, _smtpSettings.Password, cancellationToken);
             await client.SendAsync(message, cancellationToken);
+            
+            logger.LogInformation("Email sent successfully.");
         }
         catch (Exception ex)
         {

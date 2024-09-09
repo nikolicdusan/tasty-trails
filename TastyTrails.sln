@@ -24,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{4B3F
 		scripts\migrations-add.sh = scripts\migrations-add.sh
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Price & Offer Management", "Price & Offer Management", "{F3646832-8A99-4AD1-9ADD-C5AC78F66AF2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,7 @@ Global
 		{A908D551-1070-480F-B26F-B80B45052DAD} = {677B7C44-37D5-411A-8953-19AA15374FD8}
 		{58CA0019-9F22-4CC8-9F74-6D5A8C737D3E} = {677B7C44-37D5-411A-8953-19AA15374FD8}
 		{9F33E727-B039-4AF1-9BF9-1EC99A7EC58F} = {677B7C44-37D5-411A-8953-19AA15374FD8}
+		{F3646832-8A99-4AD1-9ADD-C5AC78F66AF2} = {CC479C40-8935-4FB0-BDB6-047CA53C934D}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{6798B881-744B-4CA3-A01E-1435112B3E09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
