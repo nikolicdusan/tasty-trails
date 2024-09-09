@@ -37,6 +37,7 @@ public class CreateOrderCommandHandler(IRestaurantDbContext context) : IRequestH
         {
             FirstName = request.FirstName,
             LastName = request.LastName,
+            Email = request.Email,
             Address = request.Address,
             PhoneNumber = request.PhoneNumber,
             CreatedAt = DateTime.UtcNow,

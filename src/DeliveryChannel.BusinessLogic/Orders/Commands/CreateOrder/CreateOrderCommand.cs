@@ -8,5 +8,6 @@ public record CreateOrderCommand(
     long CustomerId,
     string FirstName,
     string LastName,
+    string Email,
     string Address,
     string PhoneNumber) : IRequest<OrderDto>;
