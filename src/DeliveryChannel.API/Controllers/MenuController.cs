@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DeliveryChannel.API.Controllers;
 
 [Route("api/restaurants")]
-public class MenusController : ApiControllerBase
+public class MenuController : ApiControllerBase
 {
     [HttpGet("{restaurantId}/menus")]
     public async Task<IActionResult> GetMenus(long restaurantId, CancellationToken cancellationToken)

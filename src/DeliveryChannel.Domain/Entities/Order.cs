@@ -14,7 +14,4 @@ public class Order
     public required decimal Subtotal { get; set; }
     public required decimal Discount { get; set; }
     public required decimal Total { get; set; }
-    public required bool IsPaid { get; set; }
-    public string? Note { get; set; }
-    public ICollection<OrderItem> Items = new List<OrderItem>();
 }

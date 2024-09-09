@@ -36,7 +36,7 @@ public class ExceptionHandlingMiddleware(RequestDelegate next, ILogger<Exception
 
         var errorResponse = new
         {
-            StatusCode = context.Response.StatusCode,
+            context.Response.StatusCode,
             Message = "The requested resource was not found.",
             Detail = exception.Message
         };
@@ -64,7 +64,7 @@ public class ExceptionHandlingMiddleware(RequestDelegate next, ILogger<Exception
 
         var errorResponse = new
         {
-            StatusCode = context.Response.StatusCode,
+            context.Response.StatusCode,
             Message = "Internal Server Error",
             Detail = exception.Message
         };

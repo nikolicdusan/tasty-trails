@@ -10,6 +10,6 @@ public class Item
     public string? Ingredients { get; set; }
     public required decimal Price { get; set; }
     public required Category Category { get; set; }
-    public ICollection<MenuItem> Menus = new List<MenuItem>();
-    public ICollection<OrderItem> Orders = new List<OrderItem>();
+    public ICollection<MenuItem> MenusItems = new List<MenuItem>();
+    
 }
