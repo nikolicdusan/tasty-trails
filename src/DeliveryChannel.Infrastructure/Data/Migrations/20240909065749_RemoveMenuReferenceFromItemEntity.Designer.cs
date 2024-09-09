@@ -3,6 +3,7 @@ using System;
 using DeliveryChannel.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DeliveryChannel.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(RestaurantDbContext))]
-    partial class RestaurantDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240909065749_RemoveMenuReferenceFromItemEntity")]
+    partial class RemoveMenuReferenceFromItemEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,7 +51,7 @@ namespace DeliveryChannel.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Items", (string)null);
+                    b.ToTable("Items");
                 });
 
             modelBuilder.Entity("DeliveryChannel.Domain.Entities.Menu", b =>
@@ -75,7 +78,7 @@ namespace DeliveryChannel.Infrastructure.Data.Migrations
 
                     b.HasIndex("RestaurantId");
 
-                    b.ToTable("Menus", (string)null);
+                    b.ToTable("Menus");
                 });
 
             modelBuilder.Entity("DeliveryChannel.Domain.Entities.MenuItem", b =>
@@ -90,7 +93,7 @@ namespace DeliveryChannel.Infrastructure.Data.Migrations
 
                     b.HasIndex("ItemId");
 
-                    b.ToTable("MenuItems", (string)null);
+                    b.ToTable("MenuItems");
                 });
 
             modelBuilder.Entity("DeliveryChannel.Domain.Entities.Order", b =>
@@ -140,7 +143,7 @@ namespace DeliveryChannel.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("DeliveryChannel.Domain.Entities.OrderItem", b =>
@@ -161,7 +164,7 @@ namespace DeliveryChannel.Infrastructure.Data.Migrations
 
                     b.HasIndex("ItemId");
 
-                    b.ToTable("OrderItems", (string)null);
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("DeliveryChannel.Domain.Entities.Restaurant", b =>
@@ -190,7 +193,7 @@ namespace DeliveryChannel.Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Restaurants", (string)null);
+                    b.ToTable("Restaurants");
                 });
 
             modelBuilder.Entity("DeliveryChannel.Domain.Entities.Menu", b =>

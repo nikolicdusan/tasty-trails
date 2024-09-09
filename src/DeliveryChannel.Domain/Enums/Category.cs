@@ -2,14 +2,14 @@ namespace DeliveryChannel.Domain.Enums;
 
 public enum Category
 {
-    Starters,
-    MainDishes,
+    Starter,
+    MainDish,
     Grill,
     Pizza,
     Pasta,
-    Deserts,
+    Desert,
     Coffee,
-    SoftDrinks,
-    AlcoholDrinks,
+    SoftDrink,
+    AlcoholDrink,
     Water
 }

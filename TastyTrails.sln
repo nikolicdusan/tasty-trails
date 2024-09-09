@@ -18,6 +18,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryChannel.Infrastruct
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryChannel.BusinessLogic", "src\DeliveryChannel.BusinessLogic\DeliveryChannel.BusinessLogic.csproj", "{9F33E727-B039-4AF1-9BF9-1EC99A7EC58F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{4B3F94B9-0CC2-42EA-9DC9-E59919F641E6}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\database-update.sh = scripts\database-update.sh
+		scripts\migrations-add.sh = scripts\migrations-add.sh
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
