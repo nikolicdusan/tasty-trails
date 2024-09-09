@@ -4,8 +4,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CC479C40-893
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{CB3E163E-6CC9-4B28-91A0-8422C0B4F313}"
 	ProjectSection(SolutionItems) = preProject
-		docs\Tasty Trails - Solution Architecture.drawio.pdf = docs\Tasty Trails - Solution Architecture.drawio.pdf
 		docs\Tasty Trails - Solution Design Proposal.pdf = docs\Tasty Trails - Solution Design Proposal.pdf
+		docs\Tasty Trails - Solution Architecture.pdf = docs\Tasty Trails - Solution Architecture.pdf
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Delivery Channel", "Delivery Channel", "{677B7C44-37D5-411A-8953-19AA15374FD8}"
