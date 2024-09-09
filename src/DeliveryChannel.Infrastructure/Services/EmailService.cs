@@ -15,7 +15,7 @@ public class EmailService(ILogger<EmailService> logger, IOptions<SmtpSettings> s
         CancellationToken cancellationToken)
     {
         var message = new MimeMessage();
-        message.From.Add(new MailboxAddress("Tasty Trails", _smtpSettings.Username));
+        message.From.Add(new MailboxAddress("Tasty Trails", "mailtrap@demomailtrap.com"));
         message.To.Add(new MailboxAddress(toFullName, toEmail));
         message.Subject = subject;
 
