@@ -32,7 +32,6 @@ public class AddItemToCartCommandHandler(IRestaurantDbContext context) : IReques
         if (cartItem is not null)
         {
             cartItem.Quantity += request.Quantity;
-            cartItem.Price += request.Quantity * item.Price;
         }
         else
         {
@@ -40,7 +39,7 @@ public class AddItemToCartCommandHandler(IRestaurantDbContext context) : IReques
             {
                 ItemId = request.ItemId,
                 Quantity = request.Quantity,
-                Price = item.Price * request.Quantity
+                Price = item.Price
             };
 
             cart.CartItems.Add(cartItem);

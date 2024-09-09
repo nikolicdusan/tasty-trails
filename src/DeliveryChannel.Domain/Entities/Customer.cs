@@ -7,4 +7,5 @@ public class Customer
     public required string LastName { get; set; }
     public required string Address { get; set; }
     public required string PhoneNumber { get; set; }
+    public ICollection<Order> Orders { get; set; } = new List<Order>();
 }
