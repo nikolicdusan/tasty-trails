@@ -2,6 +2,7 @@ using DeliveryChannel.BusinessLogic.Common.Exceptions;
 using DeliveryChannel.BusinessLogic.Common.Interfaces;
 using DeliveryChannel.BusinessLogic.Common.Mappers;
 using DeliveryChannel.BusinessLogic.Orders.Commands.Models;
+using DeliveryChannel.BusinessLogic.Orders.Events.OrderCreated;
 using DeliveryChannel.Domain.Entities;
 using DeliveryChannel.Domain.Enums;
 using MediatR;
@@ -9,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DeliveryChannel.BusinessLogic.Orders.Commands.CreateOrder;
 
-public class CreateOrderCommandHandler(IRestaurantDbContext context) : IRequestHandler<CreateOrderCommand, OrderDto>
+public class CreateOrderCommandHandler(IRestaurantDbContext context, IMediator mediator) : IRequestHandler<CreateOrderCommand, OrderDto>
 {
     public async Task<OrderDto> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
     {
@@ -52,6 +53,9 @@ public class CreateOrderCommandHandler(IRestaurantDbContext context) : IRequestH
         cart.IsCheckedOut = true;
 
         await context.SaveChangesAsync(cancellationToken);
+
+        var orderCreatedEvent = new OrderCreatedEvent($"{order.FirstName} {order.LastName}", order.Email, order.Id, order.Status.ToString());
+        await mediator.Publish(orderCreatedEvent, cancellationToken);
 
         return order.ToOrderDto();
     }

@@ -11,12 +11,12 @@ public class EmailService(ILogger<EmailService> logger, IOptions<SmtpSettings> s
 {
     private readonly SmtpSettings _smtpSettings = smtpSettings.Value;
 
-    public async Task SendEmailAsync(string fullName, string fromEmail, string toEmail, string subject, string body,
+    public async Task SendEmailAsync(string toFullName, string toEmail, string subject, string body,
         CancellationToken cancellationToken)
     {
         var message = new MimeMessage();
-        message.From.Add(new MailboxAddress("Tasty Trails", fromEmail));
-        message.To.Add(new MailboxAddress(fullName, toEmail));
+        message.From.Add(new MailboxAddress("Tasty Trails", _smtpSettings.Username));
+        message.To.Add(new MailboxAddress(toFullName, toEmail));
         message.Subject = subject;
 
         var bodyBuilder = new BodyBuilder { HtmlBody = body };
