@@ -1,6 +1,7 @@
 using DeliveryChannel.BusinessLogic.Carts.Models;
 using DeliveryChannel.BusinessLogic.Common.Exceptions;
 using DeliveryChannel.BusinessLogic.Common.Interfaces;
+using DeliveryChannel.BusinessLogic.Common.Mappers;
 using DeliveryChannel.Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +32,7 @@ public class AddItemToCartCommandHandler(IRestaurantDbContext context) : IReques
         if (cartItem is not null)
         {
             cartItem.Quantity += request.Quantity;
+            cartItem.Price += request.Quantity * item.Price;
         }
         else
         {
@@ -38,7 +40,7 @@ public class AddItemToCartCommandHandler(IRestaurantDbContext context) : IReques
             {
                 ItemId = request.ItemId,
                 Quantity = request.Quantity,
-                Price = item.Price
+                Price = item.Price * request.Quantity
             };
 
             cart.CartItems.Add(cartItem);
@@ -46,9 +48,6 @@ public class AddItemToCartCommandHandler(IRestaurantDbContext context) : IReques
 
         await context.SaveChangesAsync(cancellationToken);
 
-        return new CartDto
-        {
-            
-        };
+        return cart.ToCartDto();
     }
 }

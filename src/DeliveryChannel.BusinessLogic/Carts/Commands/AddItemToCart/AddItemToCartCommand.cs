@@ -4,6 +4,6 @@ using MediatR;
 namespace DeliveryChannel.BusinessLogic.Carts.Commands.AddItemToCart;
 
 public record AddItemToCartCommand(
-    Guid CartId,
+    Guid? CartId,
     long ItemId,
     int Quantity) : IRequest<CartDto>;

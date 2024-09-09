@@ -3,7 +3,7 @@ namespace DeliveryChannel.Domain.Entities;
 public class CartItem
 {
     public long Id { get; set; }
-    public long CartId { get; set; }
+    public Guid CartId { get; set; }
     public Cart Cart { get; set; } = null!;
     public long ItemId { get; set; }
     public Item Item { get; set; } = null!;

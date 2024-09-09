@@ -10,6 +10,8 @@ public class CartController : ApiControllerBase
     [HttpPost]
     public async Task<IActionResult> AddToCart(AddItemToCartCommand command)
     {
-        var 
+        var cart = await Sender.Send(command);
+
+        return Ok(cart);
     }
 }
