@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using Core.Domain.Entities;
 using Core.Domain.Enums;
 using Core.Domain.Exceptions;
@@ -35,6 +36,7 @@ public class CheckoutOrderCommandHandler(IApplicationDbContext context, IPublish
             PhoneNumber = request.PhoneNumber,
             TotalAmount = cart.CartItems.Sum(ci => ci.Quantity * ci.Price),
             Status = OrderStatus.PendingPayment,
+            EstimatedDeliveryTimeMinutes = RandomNumberGenerator.GetInt32(10, 60)
         };
         context.Orders.Add(order);
 

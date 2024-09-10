@@ -15,5 +15,6 @@ public class Order
     public DateTime CreatedAt { get; init; } = DateTime.UtcNow;
     public decimal TotalAmount { get; set; }
     public OrderStatus Status { get; set; }
+    public int EstimatedDeliveryTimeMinutes { get; set; }
     public ICollection<OrderItem>? OrderItems { get; set; } = new List<OrderItem>();
 }

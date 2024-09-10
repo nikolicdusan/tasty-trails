@@ -1,4 +1,3 @@
-using System.Security.Cryptography;
 using Core.Domain.Entities;
 using Core.Domain.Exceptions;
 using Core.Domain.Interfaces;
@@ -23,7 +22,7 @@ public class GetOrderStatusQueryHandler(IApplicationDbContext context) : IReques
         {
             OrderId = order.Id,
             Status = order.Status.ToString(),
-            EstimatedDeliveryTimeMinutes = RandomNumberGenerator.GetInt32(10, 60)
+            EstimatedDeliveryTimeMinutes = order.EstimatedDeliveryTimeMinutes
         };
     }
 }
