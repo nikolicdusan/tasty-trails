@@ -33,10 +33,19 @@ public class CheckoutOrderCommandHandler
             Address = request.Address,
             PhoneNumber = request.PhoneNumber,
             TotalAmount = cart.CartItems.Sum(ci => ci.Quantity * ci.Price),
-            Status = OrderStatus.PendingPayment
+            Status = OrderStatus.PendingPayment,
         };
-
         context.Orders.Add(order);
+
+        var orderItems = cart.CartItems.Select(ci => new OrderItem
+        {
+            OrderId = order.Id,
+            MenuItemId = ci.MenuItemId,
+            Quantity = ci.Quantity,
+            Price = ci.Price
+        });
+        context.OrderItems.AddRange(orderItems);
+
         cart.IsCheckedOut = true;
 
         await context.SaveChangesAsync(cancellationToken);
