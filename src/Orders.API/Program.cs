@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
 using Infrastructure.Middleware;
 using Infrastructure.Persistence;
+using Infrastructure.Services;
 using Orders.Application;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +21,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddApplication();
+builder.Services.AddInfrastructureServices();
 builder.Services.AddInfrastructurePersistence(builder.Configuration);
 
 var app = builder.Build();

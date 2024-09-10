@@ -2,7 +2,8 @@ namespace Core.Domain.Enums;
 
 public enum OrderStatus
 {
-    Pending,
+    PendingPayment,
+    PendingConfirmation,
     Confirmed,
     Preparing,
     OutForDelivery,

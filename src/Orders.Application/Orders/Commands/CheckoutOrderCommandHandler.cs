@@ -1,15 +1,18 @@
 using Core.Domain.Entities;
+using Core.Domain.Enums;
 using Core.Domain.Exceptions;
 using Core.Domain.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Orders.Application.Common.Interfaces;
 using Orders.Application.Orders.DTOs;
 
 namespace Orders.Application.Orders.Commands;
 
-public class CheckoutOrderCommandHandler(IApplicationDbContext context) : IRequestHandler<CheckoutOrderCommand, OrderDto>
+public class CheckoutOrderCommandHandler
+    (IApplicationDbContext context, IPaymentGatewayService paymentGatewayService) : IRequestHandler<CheckoutOrderCommand, OrderResultDto>
 {
-    public async Task<OrderDto> Handle(CheckoutOrderCommand request, CancellationToken cancellationToken)
+    public async Task<OrderResultDto> Handle(CheckoutOrderCommand request, CancellationToken cancellationToken)
     {
         var cart = await context.Carts
             .Include(c => c.CartItems)
@@ -29,8 +32,8 @@ public class CheckoutOrderCommandHandler(IApplicationDbContext context) : IReque
             Email = request.Email,
             Address = request.Address,
             PhoneNumber = request.PhoneNumber,
-            CreatedAt = DateTime.UtcNow,
-            TotalAmount = cart.CartItems.Sum(ci => ci.Quantity * ci.Price)
+            TotalAmount = cart.CartItems.Sum(ci => ci.Quantity * ci.Price),
+            Status = OrderStatus.PendingPayment
         };
 
         context.Orders.Add(order);
@@ -38,12 +41,15 @@ public class CheckoutOrderCommandHandler(IApplicationDbContext context) : IReque
 
         await context.SaveChangesAsync(cancellationToken);
 
-        return new OrderDto
+        var paymentRedirectUrl = await paymentGatewayService.GetPaymentRedirectUrlAsync(request.PaymentMethod, order.TotalAmount, order.Id);
+
+        return new OrderResultDto
         {
             Id = order.Id,
             Status = order.Status.ToString(),
             TotalAmount = order.TotalAmount,
-            CreatedAt = order.CreatedAt
+            CreatedAt = order.CreatedAt,
+            PaymentRedirectUrl = paymentRedirectUrl
         };
     }
 }
