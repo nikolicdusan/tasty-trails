@@ -2,15 +2,15 @@ using Core.Domain.Entities;
 using Core.Domain.Enums;
 using Core.Domain.Exceptions;
 using Core.Domain.Interfaces;
+using Core.Services;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Orders.Application.Common.Interfaces;
 using Orders.Application.Orders.DTOs;
 
 namespace Orders.Application.Orders.Commands;
 
-public class CheckoutOrderCommandHandler
-    (IApplicationDbContext context, IPaymentGatewayService paymentGatewayService) : IRequestHandler<CheckoutOrderCommand, OrderResultDto>
+public class CheckoutOrderCommandHandler(IApplicationDbContext context, IPaymentGatewayService paymentGatewayService) :
+    IRequestHandler<CheckoutOrderCommand, OrderResultDto>
 {
     public async Task<OrderResultDto> Handle(CheckoutOrderCommand request, CancellationToken cancellationToken)
     {

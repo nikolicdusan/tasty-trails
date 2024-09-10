@@ -1,20 +1,27 @@
 using Core.Domain.Interfaces;
-using Infrastructure.Persistence.DbContexts;
+using Core.Services;
+using Infrastructure.Configuration;
+using Infrastructure.Data;
+using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infrastructure.Persistence;
+namespace Infrastructure;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddInfrastructurePersistence(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
+        services.Configure<SmtpSettings>(configuration.GetSection("SmtpSettings"));
+        
         services.AddDbContext<ApplicationDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("Database"),
                 cfg => cfg.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
         services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
+        services.AddScoped<IPaymentGatewayService, PaymentGatewayService>();
+        services.AddScoped<IEmailService, EmailService>();
 
         return services;
     }

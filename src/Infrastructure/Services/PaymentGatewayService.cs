@@ -1,4 +1,4 @@
-using Orders.Application.Common.Interfaces;
+using Core.Services;
 
 namespace Infrastructure.Services;
 

@@ -25,10 +25,19 @@ public class RestaurantController : ApiControllerBase
     }
 
     [HttpGet("{restaurantId}/menus")]
-    public async Task<IActionResult> GetMenus(int restaurantId)
+    public async Task<IActionResult> GetMenus(int restaurantId, CancellationToken cancellationToken)
     {
         var menus = await Sender.Send(new GetMenusQuery(restaurantId));
         
         return Ok(menus);
+    }
+
+    [HttpGet("{restaurantId}/menus/{menuId}")]
+    public async Task<IActionResult> GetMenuById(int restaurantId, int menuId, CancellationToken cancellationToken)
+    {
+        var getMenuByIdQuery = new GetMenuByIdQuery(restaurantId, menuId);
+        var menu = await Sender.Send(getMenuByIdQuery, cancellationToken);
+        
+        return Ok(menu);
     }
 }

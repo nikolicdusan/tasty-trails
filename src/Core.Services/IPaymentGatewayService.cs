@@ -1,4 +1,4 @@
-namespace Orders.Application.Common.Interfaces;
+namespace Core.Services;
 
 public interface IPaymentGatewayService
 {
