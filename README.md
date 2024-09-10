@@ -36,7 +36,7 @@ dotnet restore
 
 ```json
 "ConnectionStrings": {
-"DefaultConnection": "Host=localhost;Database=yourdatabase;Username=yourusername;Password=yourpassword"
+    "DefaultConnection": "Host=localhost;Database=yourdatabase;Username=yourusername;Password=yourpassword"
 }
 ```
 
