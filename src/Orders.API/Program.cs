@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Infrastructure.Middleware;
 using Infrastructure.Persistence;
 using Orders.Application;
@@ -11,7 +12,9 @@ builder.Host.ConfigureLogging(logging =>
 });
 
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+        options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
