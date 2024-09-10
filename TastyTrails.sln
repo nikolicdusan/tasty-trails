@@ -8,16 +8,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{CB3E163E-6
 		docs\Tasty Trails - Solution Architecture.pdf = docs\Tasty Trails - Solution Architecture.pdf
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Delivery Channel", "Delivery Channel", "{677B7C44-37D5-411A-8953-19AA15374FD8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryChannel.API", "src\DeliveryChannel.API\DeliveryChannel.API.csproj", "{6798B881-744B-4CA3-A01E-1435112B3E09}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryChannel.Domain", "src\DeliveryChannel.Domain\DeliveryChannel.Domain.csproj", "{A908D551-1070-480F-B26F-B80B45052DAD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryChannel.Infrastructure", "src\DeliveryChannel.Infrastructure\DeliveryChannel.Infrastructure.csproj", "{58CA0019-9F22-4CC8-9F74-6D5A8C737D3E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryChannel.BusinessLogic", "src\DeliveryChannel.BusinessLogic\DeliveryChannel.BusinessLogic.csproj", "{9F33E727-B039-4AF1-9BF9-1EC99A7EC58F}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{4B3F94B9-0CC2-42EA-9DC9-E59919F641E6}"
 	ProjectSection(SolutionItems) = preProject
 		scripts\database-update.sh = scripts\database-update.sh
@@ -52,11 +42,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{677B7C44-37D5-411A-8953-19AA15374FD8} = {CC479C40-8935-4FB0-BDB6-047CA53C934D}
-		{6798B881-744B-4CA3-A01E-1435112B3E09} = {677B7C44-37D5-411A-8953-19AA15374FD8}
-		{A908D551-1070-480F-B26F-B80B45052DAD} = {677B7C44-37D5-411A-8953-19AA15374FD8}
-		{58CA0019-9F22-4CC8-9F74-6D5A8C737D3E} = {677B7C44-37D5-411A-8953-19AA15374FD8}
-		{9F33E727-B039-4AF1-9BF9-1EC99A7EC58F} = {677B7C44-37D5-411A-8953-19AA15374FD8}
 		{7BA98154-E67F-43DB-9408-D2F2DDB75169} = {CC479C40-8935-4FB0-BDB6-047CA53C934D}
 		{1C9744F6-0F7E-4166-8023-58C3E4C1977F} = {7BA98154-E67F-43DB-9408-D2F2DDB75169}
 		{3579CC72-34D0-491E-8263-85E324224D0F} = {7BA98154-E67F-43DB-9408-D2F2DDB75169}
@@ -70,22 +55,6 @@ Global
 		{64381120-CB70-4134-B288-89BEE53AC738} = {F0F72A34-810F-46F9-8CAF-D7D35AA46CFE}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6798B881-744B-4CA3-A01E-1435112B3E09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6798B881-744B-4CA3-A01E-1435112B3E09}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6798B881-744B-4CA3-A01E-1435112B3E09}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6798B881-744B-4CA3-A01E-1435112B3E09}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A908D551-1070-480F-B26F-B80B45052DAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A908D551-1070-480F-B26F-B80B45052DAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A908D551-1070-480F-B26F-B80B45052DAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A908D551-1070-480F-B26F-B80B45052DAD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{58CA0019-9F22-4CC8-9F74-6D5A8C737D3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{58CA0019-9F22-4CC8-9F74-6D5A8C737D3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{58CA0019-9F22-4CC8-9F74-6D5A8C737D3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{58CA0019-9F22-4CC8-9F74-6D5A8C737D3E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9F33E727-B039-4AF1-9BF9-1EC99A7EC58F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F33E727-B039-4AF1-9BF9-1EC99A7EC58F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F33E727-B039-4AF1-9BF9-1EC99A7EC58F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F33E727-B039-4AF1-9BF9-1EC99A7EC58F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{64381120-CB70-4134-B288-89BEE53AC738}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{64381120-CB70-4134-B288-89BEE53AC738}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64381120-CB70-4134-B288-89BEE53AC738}.Release|Any CPU.ActiveCfg = Release|Any CPU

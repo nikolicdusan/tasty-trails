@@ -10,5 +10,6 @@ public class Restaurant
     public string City { get; set; } = null!;
     public string? Address { get; set; }
     public CuisineType CuisineType { get; set; }
-    public ICollection<Menu> Menus { get; set; } = new List<Menu>();
+
+    public ICollection<Menu>? Menus { get; set; } = new List<Menu>();
 }

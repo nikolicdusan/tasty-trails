@@ -7,6 +7,7 @@ public enum CuisineType
     Thai,
     Chinese,
     Japanese,
+    Indonesian,
     Mexican,
     French
 }
