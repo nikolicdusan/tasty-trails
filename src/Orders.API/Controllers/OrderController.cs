@@ -26,4 +26,12 @@ public class OrderController : ApiControllerBase
 
         return Ok(cart);
     }
+
+    [HttpPost]
+    public async Task<IActionResult> CheckoutOrder(CheckoutOrderCommand command)
+    {
+        var order = await Sender.Send(command);
+        
+        return Created();
+    }
 }
