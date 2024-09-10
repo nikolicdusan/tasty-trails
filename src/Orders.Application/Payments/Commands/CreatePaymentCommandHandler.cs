@@ -21,6 +21,15 @@ public class CreatePaymentCommandHandler(IApplicationDbContext context) : IReque
         };
 
         context.Payments.Add(payment);
+
+        var order = await context.Orders
+            .FindAsync(new object?[] { request.OrderId }, cancellationToken);
+
+        if (order is { Status: OrderStatus.PendingPayment })
+        {
+            order.Status = OrderStatus.PendingConfirmation;
+        }
+
         await context.SaveChangesAsync(cancellationToken);
 
         return new PaymentDto

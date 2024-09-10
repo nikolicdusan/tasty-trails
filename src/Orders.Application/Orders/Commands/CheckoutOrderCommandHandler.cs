@@ -6,10 +6,11 @@ using Core.Services;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Orders.Application.Orders.DTOs;
+using Orders.Application.Orders.Events;
 
 namespace Orders.Application.Orders.Commands;
 
-public class CheckoutOrderCommandHandler(IApplicationDbContext context, IPaymentGatewayService paymentGatewayService) :
+public class CheckoutOrderCommandHandler(IApplicationDbContext context, IPublisher publisher, IPaymentGatewayService paymentGatewayService) :
     IRequestHandler<CheckoutOrderCommand, OrderResultDto>
 {
     public async Task<OrderResultDto> Handle(CheckoutOrderCommand request, CancellationToken cancellationToken)
@@ -37,18 +38,23 @@ public class CheckoutOrderCommandHandler(IApplicationDbContext context, IPayment
         };
         context.Orders.Add(order);
 
-        var orderItems = cart.CartItems.Select(ci => new OrderItem
+        foreach (var cartItem in cart.CartItems)
         {
-            OrderId = order.Id,
-            MenuItemId = ci.MenuItemId,
-            Quantity = ci.Quantity,
-            Price = ci.Price
-        });
-        context.OrderItems.AddRange(orderItems);
+            var orderItem = new OrderItem
+            {
+                MenuItemId = cartItem.MenuItemId,
+                Quantity = cartItem.Quantity,
+                Price = cartItem.Price
+            };
+            order.OrderItems?.Add(orderItem);
+        }
 
         cart.IsCheckedOut = true;
 
         await context.SaveChangesAsync(cancellationToken);
+
+        var orderCreatedEvent = new OrderCreatedEvent(order.Id, order.Email, $"{order.FirstName} {order.LastName}", order.Status.ToString());
+        await publisher.Publish(orderCreatedEvent, cancellationToken);
 
         var paymentRedirectUrl = await paymentGatewayService.GetPaymentRedirectUrlAsync(request.PaymentMethod, order.TotalAmount, order.Id);
 
