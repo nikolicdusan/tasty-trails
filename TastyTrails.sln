@@ -6,6 +6,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{CB3E163E-6
 	ProjectSection(SolutionItems) = preProject
 		docs\Tasty Trails - Solution Design Proposal.pdf = docs\Tasty Trails - Solution Design Proposal.pdf
 		docs\Tasty Trails - Solution Architecture.pdf = docs\Tasty Trails - Solution Architecture.pdf
+		docs\Tasty Trails - Database Schema.pdf = docs\Tasty Trails - Database Schema.pdf
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{4B3F94B9-0CC2-42EA-9DC9-E59919F641E6}"
