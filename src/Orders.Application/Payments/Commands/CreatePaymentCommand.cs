@@ -9,4 +9,4 @@ public record CreatePaymentCommand(
     decimal Amount,
     string PaymentMethod,
     string Status,
-    DateTime PaymentDate) : IRequest<PaymentDto>;
+    DateTime PaymentDate) : IRequest<PaymentResult>;

@@ -1,6 +1,6 @@
 namespace Orders.Application.Orders.DTOs;
 
-public class OrderResultDto
+public class OrderResult
 {
     public int Id { get; set; }
     public DateTime CreatedAt { get; set; }

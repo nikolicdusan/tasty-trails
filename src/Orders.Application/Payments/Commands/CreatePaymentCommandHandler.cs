@@ -6,9 +6,9 @@ using Orders.Application.Payments.DTOs;
 
 namespace Orders.Application.Payments.Commands;
 
-public class CreatePaymentCommandHandler(IApplicationDbContext context) : IRequestHandler<CreatePaymentCommand, PaymentDto>
+public class CreatePaymentCommandHandler(IApplicationDbContext context) : IRequestHandler<CreatePaymentCommand, PaymentResult>
 {
-    public async Task<PaymentDto> Handle(CreatePaymentCommand request, CancellationToken cancellationToken)
+    public async Task<PaymentResult> Handle(CreatePaymentCommand request, CancellationToken cancellationToken)
     {
         var payment = new Payment
         {
@@ -32,7 +32,7 @@ public class CreatePaymentCommandHandler(IApplicationDbContext context) : IReque
 
         await context.SaveChangesAsync(cancellationToken);
 
-        return new PaymentDto
+        return new PaymentResult
         {
             OrderId = payment.OrderId,
             Status = payment.Status.ToString(),

@@ -1,6 +1,6 @@
 namespace Orders.Application.Payments.DTOs;
 
-public class PaymentDto
+public class PaymentResult
 {
     public int OrderId { get; set; }
     public string Status { get; set; } = null!;

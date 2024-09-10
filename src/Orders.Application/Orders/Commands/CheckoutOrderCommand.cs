@@ -10,4 +10,4 @@ public record CheckoutOrderCommand(
     string LastName,
     string Email,
     string Address,
-    string PhoneNumber) : IRequest<OrderResultDto>;
+    string PhoneNumber) : IRequest<OrderResult>;

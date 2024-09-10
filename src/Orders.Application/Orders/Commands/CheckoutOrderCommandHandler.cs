@@ -12,9 +12,9 @@ using Orders.Application.Orders.Events;
 namespace Orders.Application.Orders.Commands;
 
 public class CheckoutOrderCommandHandler(IApplicationDbContext context, IPublisher publisher, IPaymentGatewayService paymentGatewayService) :
-    IRequestHandler<CheckoutOrderCommand, OrderResultDto>
+    IRequestHandler<CheckoutOrderCommand, OrderResult>
 {
-    public async Task<OrderResultDto> Handle(CheckoutOrderCommand request, CancellationToken cancellationToken)
+    public async Task<OrderResult> Handle(CheckoutOrderCommand request, CancellationToken cancellationToken)
     {
         var cart = await context.Carts
             .Include(c => c.CartItems)
@@ -60,7 +60,7 @@ public class CheckoutOrderCommandHandler(IApplicationDbContext context, IPublish
 
         var paymentRedirectUrl = await paymentGatewayService.GetPaymentRedirectUrlAsync(request.PaymentMethod, order.TotalAmount, order.Id);
 
-        return new OrderResultDto
+        return new OrderResult
         {
             Id = order.Id,
             Status = order.Status.ToString(),
