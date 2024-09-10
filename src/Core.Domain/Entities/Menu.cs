@@ -12,6 +12,6 @@ public class Menu
     public TimeOnly AvailableFrom { get; set; }
     public TimeOnly AvailableUntil { get; set; }
     public DateTime CreatedAt { get; set; }
-    public DateTime LastUpdatedAt { get; set; }
-    public ICollection<MenuItem> MenuItems { get; set; } = new List<MenuItem>();
+    public DateTime? LastUpdatedAt { get; set; }
+    public ICollection<MenuItem>? MenuItems { get; set; } = new List<MenuItem>();
 }

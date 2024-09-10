@@ -4,7 +4,7 @@ using Orders.Application.Restaurants.Queries;
 namespace Orders.API.Controllers;
 
 [Route("api/restaurants")]
-public class RestaurantsController : ApiControllerBase
+public class RestaurantController : ApiControllerBase
 {
     [HttpGet]
     public async Task<IActionResult> GetRestaurants(CancellationToken cancellationToken)
