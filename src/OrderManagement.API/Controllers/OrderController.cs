@@ -42,10 +42,16 @@ public class OrderController : ApiControllerBase
     /// <summary>
     /// Updates order status.
     /// </summary>
+    /// <param name="orderId">The ID of an order to update.</param>
     /// <param name="command">The update order status command containing new order status.</param>
-    [HttpPut]
-    public async Task<IActionResult> UpdateOrderStatus(UpdateOrderStatusCommand command, CancellationToken cancellationToken)
+    [HttpPut("{orderId}")]
+    public async Task<IActionResult> UpdateOrderStatus(int orderId, UpdateOrderStatusCommand command, CancellationToken cancellationToken)
     {
+        if (orderId != command.OrderId)
+        {
+            return BadRequest("Order ID in the URL does not match the payload data.");
+        }
+        
         await Sender.Send(command, cancellationToken);
 
         return NoContent();

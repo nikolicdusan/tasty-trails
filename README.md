@@ -67,8 +67,8 @@ http://localhost:5000/swagger
 ```
 Use Swagger UI to interact with the API endpoints and test various operations.
 
-## API Endpoints
-## Order Management
+## Orders API Endpoints
+### Order Placement 
 - `POST /api/orders/checkout`: Place an order.
 - `GET /api/orders/{orderId}/status`: Get the status of an order.
 ### Cart Management
@@ -81,3 +81,8 @@ Use Swagger UI to interact with the API endpoints and test various operations.
 - `GET /api/restaurants/{restaurantId}`: Get a restaurant by ID.
 - `GET /api/restaurants/{restaurantId}/menus`: Get all menus for a restaurant.
 - `GET /api/restaurants/{restaurantId}/menus/{menuId}`: Get a menu by ID.
+## Order Management API Endpoints
+### Order Management
+- `GET /api/orders`: Get all pending orders.
+- `GET /api/orders/{orderId}`: Get an order by ID.
+- `PUT /api/orders/{orderId}`: Update order status.
