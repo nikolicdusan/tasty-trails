@@ -23,7 +23,7 @@ public static class DependencyInjection
         else
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseNpgsql(configuration.GetConnectionString("Database"),
+                options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"),
                     cfg => cfg.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
         }
 

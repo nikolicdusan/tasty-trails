@@ -16,6 +16,7 @@ This repository contains the implementation of an API for online food ordering, 
 ## Technologies
 
 - **.NET 8**: Framework for building and running the API.
+- **Entity Framework Core**: ORM framework for data access management.
 - **PostgreSQL**: Database for storing data related to restaurants, menus, orders, and users.
 - **Swagger**: API documentation and testing tool integrated into the project.
 
@@ -32,19 +33,25 @@ dotnet restore
 ```
 
 ### Configure the Database
-1. Update the connection string in appsettings.json to match your PostgreSQL database configuration:
+The application can be configured to use either an in-memory database (for testing) or a PostgreSQL database (for production).
+
+In the appsettings.json file, you can configure the following options:
 
 ```json
-"ConnectionStrings": {
-    "DefaultConnection": "Host=localhost;Database=yourdatabase;Username=yourusername;Password=yourpassword"
+{
+  "UseInMemoryDatabase": true, // Set to true for in-memory database, false for PostgreSQL
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=localhost;Port=5432;Database=FoodOrderingDb;Username=youruser;Password=yourpassword"
+  }
 }
 ```
 
-2. Run the database migrations to set up the schema:
+- If UseInMemoryDatabase is set to true, the application will use an in-memory database. This is useful for local testing or development.
+- If UseInMemoryDatabase is set to false, ensure that you have a PostgreSQL instance running and update the DefaultConnection string with your PostgreSQL connection details.
 
-```bash
-dotnet ef database update
-```
+#### Database Seeding
+
+The application includes database seeding to populate some initial data. This is triggered automatically on startup if the database is empty.
 
 ### Run the API
 
