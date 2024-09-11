@@ -9,8 +9,10 @@ public class OrderCreatedEventHandler(IEmailService emailService) : INotificatio
     {
         const string subject = "Tasty Trails Order Confirmation";
         var body = $"""
-                    <h1>Thank you for your order!</h1>
+                    <h2>Dear {notification.FullName}, <br/>Thank you for your order!</h2>
                     <br/>
+                    <br/>
+                    <b>Order details:</b>
                     <br/>
                     Order ID: {notification.OrderId}
                     <br/>
