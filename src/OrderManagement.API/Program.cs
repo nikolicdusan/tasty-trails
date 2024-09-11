@@ -4,7 +4,7 @@ using Infrastructure;
 using Infrastructure.Data;
 using Infrastructure.Web;
 using Microsoft.OpenApi.Models;
-using Orders.Application;
+using OrderManagement.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +18,7 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Delivery Channel API", Version = "v1" });
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Order Management API", Version = "v1" });
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
 });
 
