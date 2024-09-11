@@ -6,4 +6,4 @@ PROJECT_PATH=/Users/dusan/Projects/tasty-trails
 dotnet ef migrations add "$NAME" \
   --project $PROJECT_PATH/src/Infrastructure/Infrastructure.csproj \
   --startup-project $PROJECT_PATH/src/Orders.API/Orders.API.csproj \
-  --output-dir Migrations/
+  --output-dir Data/Migrations/

@@ -1,6 +1,7 @@
 using System.Reflection;
 using System.Text.Json.Serialization;
 using Infrastructure;
+using Infrastructure.Data;
 using Infrastructure.Web;
 using Microsoft.OpenApi.Models;
 using Orders.Application;
@@ -26,11 +27,17 @@ builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
+var cancellationToken = app.Lifetime.ApplicationStopping;
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI(options =>
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "Tasty Trails API"));
+
+    using var scope = app.Services.CreateScope();
+    var databaseInitializer = scope.ServiceProvider.GetRequiredService<DatabaseInitializer>();
+    await databaseInitializer.SeedDatabaseAsync(cancellationToken);
 }
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
