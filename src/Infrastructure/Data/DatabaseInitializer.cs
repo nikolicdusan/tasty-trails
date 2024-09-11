@@ -73,7 +73,7 @@ public class DatabaseInitializer(ApplicationDbContext context, ILogger<DatabaseI
             }
         };
 
-        foreach (var restaurant in restaurants.Where(restaurant => !context.Restaurants.Any(x => x.Name == restaurant.Name)))
+        foreach (var restaurant in restaurants.Where(restaurant => !context.Restaurants.Any(x => x.Name == restaurant.Name || x.Id == restaurant.Id)))
         {
             context.Restaurants.Add(restaurant);
         }
