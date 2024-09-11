@@ -22,6 +22,7 @@ public class OrderController : ApiControllerBase
     /// <response code="400">Invalid order data or processing failure.</response>
     [HttpPost]
     [ProducesResponseType(typeof(OrderResult), 200)]
+    [ProducesResponseType(400)]
     [ProducesResponseType(404)]
     public async Task<IActionResult> CheckoutOrder(CheckoutOrderCommand command, CancellationToken cancellationToken)
     {
